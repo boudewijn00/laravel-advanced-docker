@@ -27,6 +27,8 @@ class CreateUserJob implements ShouldQueue
      */
     public function handle(): void
     {
+        sleep(10);
+
         User::query()->create([
             'name' => 'John Doe',
             'email' => 'bob'.\mt_rand().'@bob.nl',
