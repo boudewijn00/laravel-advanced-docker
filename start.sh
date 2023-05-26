@@ -1,16 +1,12 @@
 #!/bin/bash
 
-# ----------------------------------------------------------------------
-# Create the .env file if it does not exist.
-# ----------------------------------------------------------------------
-
-# ----------------------------------------------------------------------
-# Run Composer
-# ----------------------------------------------------------------------
-
-if [[ ! -d "/var/www/vendor" ]];
-then
 cd /app
+
+if [[ ! -d "/app/vendor" ]];
+then
 composer install
 composer dump-autoload -o
 fi
+
+cp .env.example .env
+php artisan key:generate
