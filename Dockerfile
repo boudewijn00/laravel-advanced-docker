@@ -9,7 +9,9 @@ RUN chown -R www-data:www-data /app/storage/ && \
 
 WORKDIR /app
 
+RUN composer install --no-dev && \
+    cp .env.example .env && \
+    php artisan key:generate
+
 EXPOSE 443 80
 
-COPY start.sh /start.sh
-CMD ["/start.sh"]
