@@ -11,7 +11,8 @@ WORKDIR /app
 
 RUN composer install --no-dev && \
     cp .env.example .env && \
-    php artisan key:generate
+    php artisan key:generate && \
+    php artisan migrate --force
 
 EXPOSE 443 80
 
