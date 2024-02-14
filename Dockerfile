@@ -7,13 +7,15 @@ COPY . /app
 RUN chown -R www-data:www-data /app/storage/ && \
     chmod -R 777 /app/storage/
 
+WORKDIR /app
+
 #if .env not exists copy .env.example to .env
 RUN if [ ! -f .env ]; then cp .env.example .env; fi
 
 RUN composer install --no-dev --no-interaction --optimize-autoloader
 RUN php artisan migrate --force
 
-WORKDIR /app
+
 
 EXPOSE 443 80
 
