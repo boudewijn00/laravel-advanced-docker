@@ -20,7 +20,7 @@ class UsersController extends Controller
     public function create(QueueManager $queueManager): JsonResponse
     {
         $queueManager->push(new CreateUserJob());
-        
+
         return new JsonResponse([
             'message' => 'User created',
         ]);
