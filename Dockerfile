@@ -14,8 +14,11 @@ RUN if [ ! -f .env ]; then cp .env.example .env; fi
 
 RUN composer install --no-dev --no-interaction --optimize-autoloader
 RUN php artisan migrate --force
-
-
+RUN php artisan config:cache
+RUN php artisan route:cache
+RUN php artisan view:cache
+RUN php artisan queue:restart
+RUN php artisan cache:clear
 
 EXPOSE 443 80
 
