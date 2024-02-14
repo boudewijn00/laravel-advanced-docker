@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Log\LogManager;
 use Illuminate\Queue\QueueManager;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
