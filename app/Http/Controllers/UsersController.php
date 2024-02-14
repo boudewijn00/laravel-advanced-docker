@@ -4,16 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Jobs\CreateUserJob;
 use App\Models\User;
+use Illuminate\Cache\CacheManager;
 use Illuminate\Log\LogManager;
 use Illuminate\Queue\QueueManager;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class UsersController extends Controller
 {
-    public function index(): JsonResponse
+    public function index(CacheManager $cacheManager): JsonResponse
     {
+        $users = $cacheManager->remember('users', 360, function () {
+            return User::query()->get();
+        });
+
         return new JsonResponse([
-            'users' => User::query()->get(),
+            'users' => $users,
         ]);
     }
 
