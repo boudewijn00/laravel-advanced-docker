@@ -28,7 +28,7 @@ class CreateUserJob implements ShouldQueue
      */
     public function handle(LogManager $logManager): void
     {
-        $logManager->channel('stderr')->info('Creating user');
+        $logManager->channel('syslog')->info('Creating user');
 
         User::query()->create([
             'name' => 'John Doe',
