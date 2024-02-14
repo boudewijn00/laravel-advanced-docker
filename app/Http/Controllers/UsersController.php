@@ -17,7 +17,7 @@ class UsersController extends Controller
 
     public function create(QueueManager $queueManager, LogManager $logManager): JsonResponse
     {
-        $logManager->info('Creating user');
+        $logManager->channel('single')->warning('User created');
         $queueManager->push(new \App\Jobs\CreateUserJob());
 
         return new JsonResponse([
