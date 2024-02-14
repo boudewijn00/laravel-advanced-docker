@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\CreateUserJob;
 use App\Models\User;
 use Illuminate\Log\LogManager;
 use Illuminate\Queue\QueueManager;
@@ -18,6 +19,8 @@ class UsersController extends Controller
 
     public function create(QueueManager $queueManager): JsonResponse
     {
+        $queueManager->push(new CreateUserJob());
+        
         return new JsonResponse([
             'message' => 'User created',
         ]);
