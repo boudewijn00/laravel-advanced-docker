@@ -5,7 +5,8 @@ COPY laravel-worker.conf /opt/docker/etc/supervisor.d/laravel-worker.conf
 
 COPY . /app
 RUN chown -R www-data:www-data /app/storage/ && \
-    chmod -R 777 /app/storage/
+    chmod -R 777 /app/storage/ && \
+    chown -R www-data:www-data /app/logs
 
 WORKDIR /app
 
