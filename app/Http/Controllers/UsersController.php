@@ -13,7 +13,7 @@ class UsersController extends Controller
 {
     public function index(CacheManager $cacheManager): JsonResponse
     {
-        $users = $cacheManager->remember('users', 360, function () {
+        $users = $cacheManager->remember('users', 10, function () {
             return User::query()->get();
         });
 
