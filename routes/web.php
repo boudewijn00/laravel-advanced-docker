@@ -23,7 +23,7 @@ Route::get('/user', [\App\Http\Controllers\UsersController::class, 'show'])
 Route::get('/users', [\App\Http\Controllers\UsersController::class, 'index'])
     ->middleware('auth');
 
-Route::post('/users', [\App\Http\Controllers\UsersController::class, 'create'])
+Route::post('/user', [\App\Http\Controllers\UsersController::class, 'create'])
     ->middleware('auth');
 
 require __DIR__.'/auth.php';
