@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Jobs\CreateUserJob;
 use App\Models\User;
 use Illuminate\Cache\CacheManager;
-use Illuminate\Log\LogManager;
 use Illuminate\Queue\QueueManager;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
@@ -19,6 +19,13 @@ class UsersController extends Controller
 
         return new JsonResponse([
             'users' => $users,
+        ]);
+    }
+
+    public function show(Request $request): JsonResponse
+    {
+        return new JsonResponse([
+            'user' => $request->user(),
         ]);
     }
 

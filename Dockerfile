@@ -1,4 +1,4 @@
-FROM webdevops/php-nginx:8.2
+FROM webdevops/php-nginx-dev:8.2
 
 COPY vhost.conf /opt/docker/etc/nginx/vhost.conf
 COPY laravel-worker.conf /opt/docker/etc/supervisor.d/laravel-worker.conf
@@ -11,14 +11,6 @@ RUN chown -R www-data:www-data /app/storage/ && \
 WORKDIR /app
 
 RUN if [ ! -f .env ]; then cp .env.example .env; fi
-
-RUN composer install --no-dev --no-interaction --optimize-autoloader
-RUN php artisan migrate --force
-RUN php artisan config:cache
-RUN php artisan route:cache
-RUN php artisan view:cache
-RUN php artisan queue:restart
-RUN php artisan cache:clear
 
 EXPOSE 443 80
 
