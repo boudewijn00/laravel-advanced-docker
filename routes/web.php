@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +19,18 @@ Route::get('/', function () {
 });
 
 Route::get('/user', [\App\Http\Controllers\UsersController::class, 'show'])
-    ->middleware('auth');
+    ->middleware('auth:sanctum');
 
 Route::get('/users', [\App\Http\Controllers\UsersController::class, 'index'])
-    ->middleware('auth');
+    ->middleware('auth:sanctum');
 
 Route::post('/user', [\App\Http\Controllers\UsersController::class, 'create'])
-    ->middleware('auth');
+    ->middleware('auth:sanctum');
+
+Route::post('/tokens/create', function (Request $request) {
+    $token = $request->user()->createToken($request->token_name);
+
+    return ['token' => $token->plainTextToken];
+});
 
 require __DIR__.'/auth.php';
