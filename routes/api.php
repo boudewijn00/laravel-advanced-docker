@@ -22,7 +22,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users', [\App\Http\Controllers\UsersController::class, 'index']);
 
     Route::post('/logout', function (Request $request) {
-        return $request->user()->tokens()->delete();
+        $request->user()->tokens()->delete();
+
+        return response()->json([
+            'message' => 'Tokens Revoked',
+        ]);
     });
 });
 
