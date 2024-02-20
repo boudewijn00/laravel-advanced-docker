@@ -30,6 +30,9 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 });
 
+Route::post('/register', [RegisteredUserController::class, 'store'])
+    ->name('register');
+
 Route::post('/login', function (Request $request) {
     $request->validate([
         'email' => 'required|email',
