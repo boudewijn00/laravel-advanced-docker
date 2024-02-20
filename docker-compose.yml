@@ -10,7 +10,7 @@ services:
             XDEBUG_CLIENT_HOST: host.docker.internal
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: docker/development/Dockerfile
         volumes:
             - .:/app
         ports:
