@@ -5,8 +5,8 @@ COPY ../../ /app
 
 WORKDIR /app
 
-COPY /app/docker/vhost.conf /opt/docker/etc/nginx/vhost.conf
-COPY /app/docker/laravel-worker.conf /opt/docker/etc/supervisor.d/laravel-worker.conf
+COPY /docker/vhost.conf /opt/docker/etc/nginx/vhost.conf
+COPY /docker/laravel-worker.conf /opt/docker/etc/supervisor.d/laravel-worker.conf
 
 RUN chown -R www-data:www-data /app/storage/ && \
     chmod -R 777 /app/storage/
