@@ -13,6 +13,8 @@ RUN chown -R www-data:www-data /app/storage/ && \
 
 RUN if [ ! -f .env ]; then cp .env.example .env; fi
 
+RUN composer install --no-dev --no-interaction --no-progress --no-suggest --optimize-autoloader
+
 RUN php artisan key:generate && \
     php artisan migrate --force && \
     php artisan config:cache && \
