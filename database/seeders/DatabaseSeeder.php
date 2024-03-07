@@ -15,8 +15,14 @@ class DatabaseSeeder extends Seeder
         User::query()->delete();
 
         User::factory()->create([
-            'name' => 'Test User',
+            'name' => 'boudewijn overvliet',
             'email' => 'boudewijn@nlockd.com',
+            'password' => bcrypt('password'),
+        ]);
+
+        User::factory()->create([
+            'name' => 'marck mulder',
+            'email' => 'marck@nlockd.com',
             'password' => bcrypt('password'),
         ]);
     }
