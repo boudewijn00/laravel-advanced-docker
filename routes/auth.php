@@ -10,9 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/register', [RegisteredUserController::class, 'store'])
-                ->name('register');
-
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
                 ->name('login');
 
