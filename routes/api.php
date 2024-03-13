@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
+use Modules\Brand\Http\Controllers\BrandsController;
+use Modules\Supplier\Http\Controllers\SuppliersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +18,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/user', [\App\Http\Controllers\UsersController::class, 'show']);
-    Route::get('/users', [\App\Http\Controllers\UsersController::class, 'index']);
+    Route::get('/user', [UsersController::class, 'show']);
+    Route::get('/users', [UsersController::class, 'index']);
+    Route::post('/register', [RegisteredUserController::class, 'store']);
+    Route::get('/suppliers', [SuppliersController::class, 'index']);
+    Route::get('/suppliers/{id}', [SuppliersController::class, 'show']);
+    Route::post('/suppliers', [SuppliersController::class, 'create']);
+    Route::put('/suppliers/{id}', [SuppliersController::class, 'update']);
+    Route::delete('/suppliers/{id}', [SuppliersController::class, 'destroy']);
+    Route::post('/brands', [BrandsController::class, 'create']);
 });
-
-Route::post('/register', [RegisteredUserController::class, 'store'])
-    ->name('register');
 
 

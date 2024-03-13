@@ -17,20 +17,4 @@ Route::get('/', function () {
     echo phpinfo();
 });
 
-Route::get('/config', function (\Illuminate\Config\Repository $config) {
-    dd([
-        'cors' => $config->get('cors'),
-        'sanctum' => $config->get('sanctum'),
-    ]);
-});
-
-Route::get('/user', [\App\Http\Controllers\UsersController::class, 'show'])
-    ->middleware('auth');
-
-Route::get('/users', [\App\Http\Controllers\UsersController::class, 'index'])
-    ->middleware('auth');
-
-Route::post('/user', [\App\Http\Controllers\UsersController::class, 'create'])
-    ->middleware('auth');
-
 require __DIR__.'/auth.php';

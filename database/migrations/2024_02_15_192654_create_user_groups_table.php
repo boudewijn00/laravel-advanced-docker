@@ -18,7 +18,7 @@ return new class extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('user_group_id')->nullable()->constrained();
+            $table->foreignId('user_group_id')->after('id')->nullable()->constrained();
         });
     }
 
@@ -27,6 +27,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropConstrainedForeignId('user_group_id');
+        });
         Schema::dropIfExists('user_groups');
     }
 };
