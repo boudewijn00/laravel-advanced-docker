@@ -9,11 +9,11 @@ services:
             XDEBUG_CLIENT_HOST: host.docker.internal
         build:
             context: .
-            dockerfile: docker/development/Dockerfile
+            dockerfile: docker/production/Dockerfile
         volumes:
             - .:/app
         ports:
-            - 8080:80
+            - 80:80
         depends_on:
             - mysql
             - redis
