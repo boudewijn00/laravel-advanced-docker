@@ -1,12 +1,6 @@
 services:
     app:
         container_name: lad-app
-        extra_hosts:
-            - "host.docker.internal:host-gateway"
-        environment:
-            CONTAINER_ROLE: app
-            PHP_IDE_CONFIG: "serverName=localhost"
-            XDEBUG_CLIENT_HOST: host.docker.internal
         build:
             context: .
             dockerfile: docker/production/Dockerfile
