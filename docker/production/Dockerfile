@@ -11,8 +11,6 @@ COPY /docker/laravel-worker.conf /opt/docker/etc/supervisor.d/laravel-worker.con
 RUN chown -R www-data:www-data /app/storage/ && \
     chmod -R 777 /app/storage/
 
-COPY .env.production .env
-
 RUN composer install --no-dev --no-interaction --no-progress --no-suggest --optimize-autoloader
 
 EXPOSE 443 80
