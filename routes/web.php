@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    echo "Hello World!";
+    echo phpinfo();
 });
 
 require __DIR__.'/auth.php';
