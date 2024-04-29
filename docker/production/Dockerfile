@@ -15,8 +15,5 @@ COPY .env.production .env
 
 RUN composer install --no-dev --no-interaction --no-progress --no-suggest --optimize-autoloader
 
-RUN php artisan migrate --force
-RUN php artisan db:seed --force
-
 EXPOSE 443 80
 
