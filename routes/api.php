@@ -21,12 +21,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [UsersController::class, 'show']);
     Route::get('/users', [UsersController::class, 'index']);
     Route::post('/register', [RegisteredUserController::class, 'store']);
-    Route::get('/suppliers', [SuppliersController::class, 'index']);
-    Route::get('/suppliers/{id}', [SuppliersController::class, 'show']);
-    Route::post('/suppliers', [SuppliersController::class, 'create']);
-    Route::put('/suppliers/{id}', [SuppliersController::class, 'update']);
-    Route::delete('/suppliers/{id}', [SuppliersController::class, 'destroy']);
-    Route::post('/brands', [BrandsController::class, 'create']);
 });
 
 
